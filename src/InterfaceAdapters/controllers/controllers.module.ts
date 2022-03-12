@@ -2,7 +2,7 @@ import { RepositoriesModule } from '@Adapters/repositories/repositories.module';
 import { UsersRepository } from '@Adapters/repositories/users.repository';
 import { Module } from '@nestjs/common';
 import { GetUsersInteractor } from '@UseCases/Interactors/users/getUsers.interactor';
-import { UsersController } from './users/users.controller';
+import { UsersController } from './users.controller';
 
 @Module({
   imports: [RepositoriesModule],
