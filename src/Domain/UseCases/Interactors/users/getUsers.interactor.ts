@@ -11,8 +11,9 @@ export class GetUsersInteractor
     const users = await this.usersDataGateway.findAll();
 
     return users.map((user) => {
-      const { name, username } = user;
-      return { name, username };
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      const { password, ...userWithoutPassword } = user;
+      return userWithoutPassword;
     });
   }
 }
