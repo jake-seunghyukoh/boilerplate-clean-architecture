@@ -1,7 +1,7 @@
 import { AllExceptionsFilter } from '@Adapters/common/filters/exceptions.filter';
 import { LoggingInterceptor } from '@Adapters/common/interceptors/logger.interceptors';
 import { ResponseInterceptor } from '@Adapters/common/interceptors/response.interceptor';
-import { LoggerService } from '@Adapters/logger/logger.service';
+import { LoggerService } from '@Adapters/common/logger/logger.service';
 import { ValidationPipe } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';

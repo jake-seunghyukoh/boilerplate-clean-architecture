@@ -1,4 +1,4 @@
-import { ExceptionsService } from '@Adapters/exceptions/exceptions.service';
+import { ExceptionsService } from '@Adapters/common/exceptions/exceptions.service';
 import { Module } from '@nestjs/common';
 
 @Module({

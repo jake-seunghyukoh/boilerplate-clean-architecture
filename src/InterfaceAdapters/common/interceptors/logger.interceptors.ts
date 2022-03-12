@@ -1,4 +1,4 @@
-import { LoggerService } from '@Adapters/logger/logger.service';
+import { LoggerService } from '@Adapters/common/logger/logger.service';
 import {
   CallHandler,
   ExecutionContext,
