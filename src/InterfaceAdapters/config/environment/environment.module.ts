@@ -1,4 +1,4 @@
-import { EnvironmentService } from '@Adapters/config/environment/environment.service';
+import { EnvironmentConfigService } from '@Adapters/config/environment/environment.service';
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 
@@ -11,7 +11,7 @@ import { ConfigModule } from '@nestjs/config';
           : ['.env.production.local', '.env.production'],
     }),
   ],
-  providers: [EnvironmentService],
-  exports: [EnvironmentService],
+  providers: [EnvironmentConfigService],
+  exports: [EnvironmentConfigService],
 })
-export class EnvironmentModule {}
+export class EnvironmentConfigModule {}

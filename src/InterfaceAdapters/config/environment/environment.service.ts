@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 
 @Injectable()
-export class EnvironmentService {
+export class EnvironmentConfigService {
   constructor(private configService: ConfigService) {}
 
   getDatabaseHost(): string {

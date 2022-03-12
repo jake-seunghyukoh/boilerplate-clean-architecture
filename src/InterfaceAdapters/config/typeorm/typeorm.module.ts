@@ -1,10 +1,10 @@
-import { EnvironmentModule } from '@Adapters/config/environment/environment.module';
-import { EnvironmentService } from '@Adapters/config/environment/environment.service';
+import { EnvironmentConfigModule } from '@Adapters/config/environment/environment.module';
+import { EnvironmentConfigService } from '@Adapters/config/environment/environment.service';
 import { Module } from '@nestjs/common';
 import { TypeOrmModule, TypeOrmModuleOptions } from '@nestjs/typeorm';
 
 export const getTypeOrmModuleOptions = (
-  config: EnvironmentService,
+  config: EnvironmentConfigService,
 ): TypeOrmModuleOptions => {
   return {
     type: 'mysql',
@@ -21,8 +21,8 @@ export const getTypeOrmModuleOptions = (
 @Module({
   imports: [
     TypeOrmModule.forRootAsync({
-      imports: [EnvironmentModule],
-      inject: [EnvironmentService],
+      imports: [EnvironmentConfigModule],
+      inject: [EnvironmentConfigService],
       useFactory: getTypeOrmModuleOptions,
     }),
   ],
