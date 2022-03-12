@@ -8,11 +8,16 @@ export class GetUsersInteractor
   constructor(private readonly usersDataGateway: Users) {}
 
   async execute(): Promise<GetUsersOutputModel[]> {
-    const users = await this.usersDataGateway.findAll();
+    const userDtos = await this.usersDataGateway.findAll();
 
-    return users.map((user) => {
-      const { name, username } = user;
-      return { name, username };
+    const users = userDtos.map((dto) => dto.toEntity());
+
+    const usersOutputModels: GetUsersOutputModel[] = users.map((user) => {
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      const { password, ...userWithoutPassword } = user;
+      return userWithoutPassword;
     });
+
+    return usersOutputModels;
   }
 }
