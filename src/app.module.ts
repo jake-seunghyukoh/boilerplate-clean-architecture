@@ -1,19 +1,9 @@
 import { EnvironmentModule } from '@Adapters/config/environment/environment.module';
+import { TypeormConfigModule } from '@Adapters/config/typeorm/typeorm.module';
 import { ControllersModule } from '@Adapters/controllers/controllers.module';
 import { Module } from '@nestjs/common';
-import { TypeOrmModule } from '@nestjs/typeorm';
-import { getConnectionOptions } from 'typeorm';
 
 @Module({
-  imports: [
-    EnvironmentModule,
-    ControllersModule,
-    TypeOrmModule.forRootAsync({
-      useFactory: async () =>
-        Object.assign(await getConnectionOptions(), {
-          autoLoadEntities: true,
-        }),
-    }),
-  ],
+  imports: [EnvironmentModule, ControllersModule, TypeormConfigModule],
 })
 export class AppModule {}
