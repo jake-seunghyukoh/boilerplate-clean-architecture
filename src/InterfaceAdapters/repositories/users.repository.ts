@@ -1,7 +1,7 @@
 import { UserEntity } from '@Adapters/schemas/user.schema';
-import { User } from '@Entities/user.entity';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Users } from '@UseCases/DataGateways/users.gateway';
+import { UserDto } from '@UseCases/Dtos/user.dto';
 import { Repository } from 'typeorm';
 
 export class UsersRepository implements Users {
@@ -10,14 +10,14 @@ export class UsersRepository implements Users {
     private readonly usersRepository: Repository<UserEntity>,
   ) {}
 
-  async findAll(): Promise<User[]> {
+  async findAll(): Promise<UserDto[]> {
     const userEntities = await this.usersRepository.find();
 
     return userEntities.map((user) => this.toModel(user));
   }
 
   toModel(userEntity: UserEntity) {
-    const user = new User();
+    const user = new UserDto();
 
     const { id, name, username, password } = userEntity;
 

@@ -1,5 +1,5 @@
-import { User } from '@Entities/user.entity';
+import { UserDto } from '@UseCases/Dtos/user.dto';
 
 export interface Users {
-  findAll(): Promise<User[]>;
+  findAll(): Promise<UserDto[]>;
 }
