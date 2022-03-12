@@ -1,23 +1,16 @@
 import { GetUsersInteractor } from '../Domain/UseCases/Interactors/users/getUsers.interactor';
-import * as express from 'express';
-import { Request, Response } from 'express';
-import { GetUsersController } from './controllers/users/getUsers.controller';
+import { UsersController } from './controllers/users/users.controller';
 import { UsersRepository } from './repositories/users.repository';
+import { HttpServer } from './server';
 
-const app = express();
-const port = 3000;
+async function main() {
+  const usersRepository = new UsersRepository();
+  const getUsersInteractor = new GetUsersInteractor(usersRepository);
+  const usersController = new UsersController(getUsersInteractor);
 
-app.get('/', (_: Request, res: Response) => {
-  res.send('ok');
-});
+  const server = new HttpServer({ users: usersController });
 
-app.get('/users', (req: Request, res: Response) =>
-  new GetUsersController(new GetUsersInteractor(new UsersRepository())).execute(
-    req,
-    res,
-  ),
-);
+  server.start(3000);
+}
 
-app.listen(port, () => {
-  console.log(`Now listening on port ${port}`);
-});
+main();
