@@ -17,6 +17,6 @@ export class UsersController {
   async getUsers() {
     const users = await this.getUsersPort.execute();
 
-    return { data: users };
+    return users;
   }
 }

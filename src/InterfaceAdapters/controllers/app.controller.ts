@@ -4,8 +4,6 @@ import { Controller, Get } from '@nestjs/common';
 export class AppController {
   @Get()
   healthChecker() {
-    return {
-      data: 'ok',
-    };
+    return 'ok';
   }
 }
