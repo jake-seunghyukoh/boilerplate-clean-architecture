@@ -9,17 +9,19 @@ export class UsersRepository implements Users {
     @InjectRepository(UserEntity)
     private readonly usersRepository: Repository<UserEntity>,
   ) {}
+
   async findAll(): Promise<User[]> {
     const userEntities = await this.usersRepository.find();
 
-    return userEntities.map((user) => this.toModels(user));
+    return userEntities.map((user) => this.toModel(user));
   }
 
-  toModels(userEntity: UserEntity) {
+  toModel(userEntity: UserEntity) {
     const user = new User();
 
-    const { name, username, password } = userEntity;
+    const { id, name, username, password } = userEntity;
 
+    user.id = id;
     user.name = name;
     user.username = username;
     user.password = password;
