@@ -7,4 +7,8 @@ export class User {
   password: string;
 
   name: Name;
+
+  comparePassword(password: string): boolean {
+    return this.password === password;
+  }
 }
